@@ -13,7 +13,6 @@ public:
             return nullptr;
         }
         
-        // Phase 1: Detect cycle using slow and fast pointers
         ListNode *slow = head;
         ListNode *fast = head;
         
@@ -22,17 +21,14 @@ public:
             fast = fast->next->next;
             
             if (slow == fast) {
-                // Cycle detected, break out of loop
                 break;
             }
         }
         
-        // No cycle found
         if (!fast || !fast->next) {
             return nullptr;
         }
-        
-        // Phase 2: Find the cycle start
+    
         slow = head;
         while (slow != fast) {
             slow = slow->next;
